@@ -25,18 +25,19 @@ where
 
 As a reminder the QUBOs for each relationship are as follows.
 
-Friendly relationship
+Friendly relationship:
 
 ![friendly](readme_images/friendly.png "friendly")
 
-Hostile relationship
+Hostile relationship:
 
 ![hostile](readme_images/hostile.png "hostile")       
 
-##Instructions:
+## Instructions:
+
 There are two parts to this assignment.
 
-###Exercise 1:  
+### Exercise 1:  
 In this exercise you will build a QUBO for the friends and enemies problem on a random
 graph. The QUBO will be submitted to the QPU. Feel free to experiment
  with the size of the graph and remember to make your code scalable so you don't have to
@@ -52,7 +53,7 @@ graph. The QUBO will be submitted to the QPU. Feel free to experiment
 Hint:  
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
     
-###Exercise 2:  
+### Exercise 2:  
 In this exercise you will build a BQM for the friends and enemies problem on a random graph.
 This time you will submit the problem to the BQM hybrid solver. Although the work you did
 in exercise 1 will come in handy, pay close attention to the differences between a dictionary
@@ -68,7 +69,7 @@ Hints:
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
 * Check the dimod documentation to learn how and when to use AdjVectorBQM
 
-####Resources
+#### Resources
 1. Ocean documentation: https://docs.ocean.dwavesys.com/en/latest/index.html
 2. BQM documentation: https://docs.ocean.dwavesys.com/en/latest/docs_dimod/reference/bqm.html#usage
 3. Random python module: https://docs.python.org/3/library/random.html
