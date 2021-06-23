@@ -119,7 +119,8 @@ def visualize(G, Q, sampleset, problem_filename, solution_filename):
     nodecolors = [blue if sample[i] == 0 else yellow for i in G.nodes()]
 
     # Get a subset of the original graph (just the nodes assigned to group 1)
-    bipartite_set = [node for node in sample if sample[node] == 1]
+    set0 = [node for node in sample if sample[node] == 0]
+    set1 = G.nodes - set0
 
     # Visualize the problem and results
     plt.figure(0)
@@ -135,10 +136,17 @@ def visualize(G, Q, sampleset, problem_filename, solution_filename):
 
     # Save the solution as a bipartite graph
     plt.figure(1)
-    nx.draw_networkx(G, pos=nx.drawing.layout.bipartite_layout(G, bipartite_set), with_labels=True,
-                     node_color=nodecolors,
-                     edge_color=edgecolors)
-    plt.savefig("bipartitie_{}".format(solution_filename), bbox_inches='tight')
+
+    pos_1 = nx.circular_layout(G.subgraph(set0), center=(-3, -0.5))
+    pos_2 = nx.circular_layout(G.subgraph(set1), center=(3, 1))
+    pos = {**pos_1, **pos_2}
+
+    nx.draw_networkx_nodes(G, pos_1, nodelist=set0, node_color=blue)
+    nx.draw_networkx_nodes(G, pos_2, nodelist=set1, node_color=yellow)
+    nx.draw_networkx_edges(G, pos, edgelist=G.edges(), edge_color=edgecolors)
+    nx.draw_networkx_labels(G, pos)
+
+    plt.savefig("partitioned_{}".format(solution_filename), bbox_inches='tight')
 
 ## ------- Main program -------
 if __name__ == "__main__":
@@ -166,18 +174,18 @@ if __name__ == "__main__":
     set0_friendly = 0
     set0_hostile = 0
     for i, j in subgraph0.edges:
-        if Q[(i, j)] < 0:
+        if i != j and Q[(i, j)] < 0:
             set0_friendly += 1
-        elif Q[(i, j)] > 0:
+        elif i != j and Q[(i, j)] > 0:
             set0_hostile += 1
 
     # Get friendly and hostile relationships in set 1
     set1_friendly = 0
     set1_hostile = 0
     for i, j in subgraph1.edges:
-        if Q[(i, j)] < 0:
+        if i != j and Q[(i, j)] < 0:
             set1_friendly += 1
-        elif Q[(i, j)] > 0:
+        elif i != j and Q[(i, j)] > 0:
             set1_hostile += 1
 
     # Get friendly and hostile relationships between the sets
@@ -185,9 +193,9 @@ if __name__ == "__main__":
     cut_friendly = 0
     cut_hostile = 0
     for i, j in cut_edges:
-        if Q[(i, j)] < 0:
+        if i != j and Q[(i, j)] < 0:
             cut_friendly += 1
-        elif Q[(i, j)] > 0:
+        elif i != j and Q[(i, j)] > 0:
             cut_hostile += 1
 
     # Print the results

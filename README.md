@@ -20,8 +20,15 @@ where
 * red edges = hostile relationships
 * green edges = friendly relationships
 * black nodes = nodes in the problem 
-* yellow nodes = nodes in one group (in the solution)
-* blue nodes = nodes in the second group (in the solution)
+* blue nodes = nodes in one group (set 0 in the solution)
+* yellow nodes = nodes in the second group (set 1 in the solution)
+
+A summary of the number of friendly and hostile edges in each set, as well as 
+the friendly and hostile edges between sets (0-> 1), is also printed out in the command line.
+For example, the output below shows that there are 3 friendly and 9 hostile edges between sets
+0 and 1, as you can see in the images above. 
+
+![command_line_output](readme_images/command_line_output.png "command_line_output")
 
 As a reminder the QUBOs for each relationship are as follows.
 
@@ -46,9 +53,9 @@ graph. The QUBO will be submitted to the QPU. Feel free to experiment
   
  Open up the `friends_enemies_qpu.py` file. You will need to
  
-1. Add your API token
-2. Construct the QUBO for the friends and enemies problem 
-3. Run the problem on the QPU
+1. Add your API token.
+2. Construct the QUBO for the friends and enemies problem .
+3. Run the problem on the QPU.
 
 Hint:  
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
@@ -61,9 +68,10 @@ and the type of BQM you're asked to create.
 
 Open up the `friends_enemies_hybrid.py` file. You will need to
 
-1. Create a graph that's too large to run on the QPU
-2. Construct a BQM for the friends and enemies problem
-3. Run the problem on the hybrid sampler
+1. Create a graph that's too large to run on the QPU.
+2. Construct a BQM for the friends and enemies problem. Check the documentation below to find out which
+data structures to use for hybrid-sized problems.
+3. Run the problem on the hybrid sampler.
 
 Hints:  
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
