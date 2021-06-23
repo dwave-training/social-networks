@@ -13,43 +13,41 @@
 # limitations under the License.
 
 ## ------- import packages -------
+import random
+
+import matplotlib
+matplotlib.use("agg")
+import matplotlib.pyplot as plt
+
+from collections import defaultdict
 import networkx as nx
 import dimod
 from dwave.system import DWaveSampler, EmbeddingComposite
 
-import random
-from collections import defaultdict
-
-import networkx as nx
-import matplotlib.pyplot as plt
-
-
 def get_token():
-    '''Return your personal access token'''
+    """Return your personal access token"""
 
     # TODO: Enter your token here
     return 'YOUR-TOKEN-HERE'
 
 
 def get_graph():
-    '''
-    Randomly generats a graph that represents a social network (nodes will represent people and edges
-    represent relationships between people)
-    '''
+    """ Randomly generats a graph that represents a social network (nodes will
+    represent people and edges represent relationships between people)
+    """
 
     # TODO: Change this parameter if you'd like to change the size of the graph (social network)
     graph_size = 4
 
-    # Generate a random graph (with a 70% probability of edge creation)
-    G = nx.gnp_random_graph(graph_size, 0.70)
+    # Generate a random graph (with a 60% probability of edge creation)
+    G = nx.gnp_random_graph(graph_size, 0.60)
 
     return G
 
 
 # TODO:  Add code here to define your QUBO dictionary
 def get_qubo(G):
-    '''
-    Randomly assign a friendly or hostile relationship to edges in the dictionary.
+    """ Randomly assign a friendly or hostile relationship to edges in the dictionary.
 
     Args:
         G: (:obj:`networkx.Graph`):
@@ -58,7 +56,7 @@ def get_qubo(G):
 
     Returns:
         :obj:`Dict`: A QUBO dictionary
-    '''
+    """
     # Build the Q matrix
     Q = defaultdict(int)
 
@@ -69,8 +67,7 @@ def get_qubo(G):
 
 # TODO: Add the QPU sampler and return the sampleset
 def run_on_qpu(Q):
-    '''
-    Submits the QUBO to a QPU sampler and returns the sampleset
+    """ Submits the QUBO to a QPU sampler and returns the sampleset
 
     Args:
         Q: (:obj:`Dict`):
@@ -78,15 +75,14 @@ def run_on_qpu(Q):
 
     Returns:
         :obj:`SampleSet`: The sampleset from the QPU sampler
-    '''
+    """
 
     # Define the sampler and submit the QUBO
 
     return
 
 def visualize(G, Q, sampleset, problem_filename, solution_filename):
-    '''
-    Creates and saves plots that show the problem and solution returned in the lowest
+    """ Creates and saves plots that show the problem and solution returned in the lowest
     energy sample in the sampleset. It also prints the solution in a bipartite layout
     with the filename bipartite_solution_filename.
 
@@ -105,7 +101,7 @@ def visualize(G, Q, sampleset, problem_filename, solution_filename):
 
         solution_filename: (:obj:`Str`):
             The filename for the graph of the solution
-    '''
+    """
     # Get the best solution to display
     sample = sampleset.first.sample
 
@@ -148,19 +144,16 @@ def visualize(G, Q, sampleset, problem_filename, solution_filename):
 
     plt.savefig("partitioned_{}".format(solution_filename), bbox_inches='tight')
 
-## ------- Main program -------
-if __name__ == "__main__":
-    # Generate a graph of a social network
-    G = get_graph()
+def process_sampleset(G, sampleset):
+    """ Prints a summary of hostile and friendly edges in each set and between sets.
 
-    # Solve this problem on a QPU solver
-    Q = get_qubo(G)
-    sampleset = run_on_qpu(Q)
+    Args:
+        G: (:obj:`networkx.Graph`):
+            The Networkx graph of the friends and enemies problem
 
-    # Visualize results
-    visualize(G, Q, sampleset, "qpu_problem_graph.png", "qpu_solution_graph.png")
-
-    # Process results
+        sampleset: (:obj:`SampleSet`):
+            The sampleset from the QPU sampler
+    """
     # Get the best solution to display
     sample = sampleset.first.sample
 
@@ -206,3 +199,18 @@ if __name__ == "__main__":
     print('{:>15s}{:>15s}{:^15s}'.format('0', str(set0_friendly), str(set0_hostile)))
     print('{:>15s}{:>15s}{:^15s}'.format('1', str(set1_friendly), str(set1_hostile)))
     print('{:>15s}{:>15s}{:^15s}'.format('0 -> 1', str(cut_friendly), str(cut_hostile)))
+
+## ------- Main program -------
+if __name__ == "__main__":
+    # Generate a graph of a social network
+    G = get_graph()
+
+    # Solve this problem on a QPU solver
+    Q = get_qubo(G)
+    sampleset = run_on_qpu(Q)
+
+    # Visualize results
+    visualize(G, Q, sampleset, "qpu_problem_graph.png", "qpu_solution_graph.png")
+
+    # Process results
+    process_sampleset(G, sampleset)

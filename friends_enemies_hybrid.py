@@ -13,18 +13,20 @@
 # limitations under the License.
 
 ## ------- import packages -------
-import networkx as nx
-import dimod
-from dwave.system import LeapHybridSampler
-
 import random
+
+import matplotlib
+matplotlib.use("agg")
 import matplotlib.pyplot as plt
 
+import dimod
+import networkx as nx
+from dwave.system import LeapHybridSampler
+
 def get_graph():
-    '''
-    Randomly generats a graph that represents a social network (nodes will represent people and edges
-    represent relationships between people)
-    '''
+    """ Randomly generats a graph that represents a social network (nodes will
+    represent people and edges represent relationships between people)
+    """
 
     # TODO: Change this parameter to change the size of the graph
     graph_size = 4
@@ -34,10 +36,9 @@ def get_graph():
 
     return G
 
-# TODO: Add code here to define a BQM using AdjDictBQM from dimod
+# TODO: Add code here to define a BQM using AdjVectorBQM from dimod
 def get_bqm(G):
-    '''
-    Randomly assign a friendly or hostile relationship to edges in the dictionary.
+    """ Randomly assign a friendly or hostile relationship to edges in the dictionary.
 
     Args:
         G: (:obj:`networkx.Graph`):
@@ -46,7 +47,7 @@ def get_bqm(G):
 
     Returns:
         :obj:`AdjVectorBQM`: A binary-valued binary quadratic model
-    '''
+    """
     # Build the BQM
 
     # Add linear and quadratic biases to the BQM
@@ -56,8 +57,7 @@ def get_bqm(G):
 
 # TODO: Add the hybrid sampler and return the sampleset
 def run_on_hybrid(bqm):
-    '''
-    Submits the BQM to the BQM hybrid sampler and returns the sampleset
+    """ Submits the BQM to the BQM hybrid sampler and returns the sampleset
 
     :param bqm: BQM for the problem
     :return: Sampleset from the hybrid sampler
@@ -68,15 +68,14 @@ def run_on_hybrid(bqm):
 
     Returns:
         :obj:`SampleSet`: The sampleset from the hybrid sampler
-    '''
+    """
 
     # Define the sampler and submit the BQM
 
     return
 
 def visualize(G, bqm, sampleset, problem_filename, solution_filename):
-    '''
-    Creates and saves plots that show the problem and solution returned in the lowest
+    """ Creates and saves plots that show the problem and solution returned in the lowest
     energy sample in the sampleset. It also prints the solution in a bipartite layout
     with the filename bipartite_solution_filename.
 
@@ -95,7 +94,7 @@ def visualize(G, bqm, sampleset, problem_filename, solution_filename):
 
         solution_filename: (:obj:`Str`):
             The filename for the graph of the solution
-    '''
+    """
     # Get the best solution to display
     sample = sampleset.first.sample
 
@@ -138,19 +137,16 @@ def visualize(G, bqm, sampleset, problem_filename, solution_filename):
 
     plt.savefig("partitioned_{}".format(solution_filename), bbox_inches='tight')
 
-## ------- Main program -------
-if __name__ == "__main__":
-    # Generate a random graph (with a 75% probability of edge creation)
-    G = get_graph()
+def process_sampleset(G, sampleset):
+    """ Prints a summary of hostile and friendly edges in each set and between sets.
 
-    # Solve this problem on the BQM hybrid solver
-    bqm = get_bqm(G)
-    sampleset = run_on_hybrid(bqm)
+    Args:
+        G: (:obj:`networkx.Graph`):
+            The Networkx graph of the friends and enemies problem
 
-    # Visualize results
-    visualize(G, bqm, sampleset, "hybrid_problem_graph.png", "hybrid_solution_graph.png")
-
-    # Process results
+        sampleset: (:obj:`SampleSet`):
+            The sampleset from the QPU sampler
+    """
     # Get the best solution to display
     sample = sampleset.first.sample
 
@@ -196,5 +192,21 @@ if __name__ == "__main__":
     print('{:>15s}{:>15s}{:^15s}'.format('0', str(set0_friendly), str(set0_hostile)))
     print('{:>15s}{:>15s}{:^15s}'.format('1', str(set1_friendly), str(set1_hostile)))
     print('{:>15s}{:>15s}{:^15s}'.format('0 -> 1', str(cut_friendly), str(cut_hostile)))
+
+## ------- Main program -------
+if __name__ == "__main__":
+    # Generate a random graph (with a 75% probability of edge creation)
+    G = get_graph()
+
+    # Solve this problem on the BQM hybrid solver
+    bqm = get_bqm(G)
+    sampleset = run_on_hybrid(bqm)
+
+    # Visualize results
+    visualize(G, bqm, sampleset, "hybrid_problem_graph.png", "hybrid_solution_graph.png")
+
+    # Process results
+    process_sampleset(G, sampleset)
+
 
 
