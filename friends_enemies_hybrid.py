@@ -23,6 +23,12 @@ import dimod
 import networkx as nx
 from dwave.system import LeapHybridSampler
 
+def get_token():
+    """Return your personal access token"""
+
+    # TODO: Enter your token here
+    return 'YOUR-TOKEN-HERE'
+
 def get_graph():
     """ Randomly generats a graph that represents a social network (nodes will
     represent people and edges represent relationships between people)
