@@ -68,10 +68,11 @@ and the type of BQM you're asked to create.
 
 Open up the `friends_enemies_hybrid.py` file. You will need to
 
-1. Create a graph that's too large to run on the QPU.
-2. Construct a BQM for the friends and enemies problem. Check the documentation below to find out which
+1. Add your API token.
+2. Create a graph that's too large to run on the QPU.
+3. Construct a BQM for the friends and enemies problem. Check the documentation below to find out which
 data structures to use for hybrid-sized problems.
-3. Run the problem on the hybrid sampler.
+4. Run the problem on the hybrid sampler.
 
 Hints:  
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
