@@ -24,8 +24,8 @@ import networkx as nx
 from dwave.system import LeapHybridSampler
 
 def get_token():
-    """Return your personal access token"""
-
+    '''Returns personal access token. Only required if submitting to autograder.'''
+    
     # TODO: Enter your token here
     return 'YOUR-TOKEN-HERE'
 
