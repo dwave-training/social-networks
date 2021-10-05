@@ -83,3 +83,7 @@ Hint:
 4. How to use the timeout parameter with the embedding tools: 
 https://support.dwavesys.com/hc/en-us/community/posts/360052799433/comments/1500000168162
 5. Maximum cut code example: https://github.com/dwave-examples/maximum-cut
+
+## License
+
+Released under the Apache License 2.0. See [LICENSE](LICENSE) file.
