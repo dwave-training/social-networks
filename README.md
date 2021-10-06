@@ -64,24 +64,26 @@ Hint:
 In this exercise you will build a BQM for the friends and enemies problem on a random graph.
 This time you will submit the problem to the BQM hybrid solver. Although the work you did
 in exercise 1 will come in handy, pay close attention to the differences between a dictionary
-and the type of BQM you're asked to create. 
+and the BinaryQuadraticModel you're asked to create. 
 
 Open up the `friends_enemies_hybrid.py` file. You will need to
 
 1. Add your API token.
 2. Create a graph that's too large to run on the QPU.
-3. Construct a BQM for the friends and enemies problem. Check the documentation below to find out which
-data structures to use for hybrid-sized problems.
+3. Construct a BQM for the friends and enemies problem. 
 4. Run the problem on the hybrid sampler.
 
-Hints:  
+Hint:  
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
-* Check the dimod documentation to learn how and when to use AdjVectorBQM
 
 #### Resources
 1. Ocean documentation: https://docs.ocean.dwavesys.com/en/latest/index.html
-2. BQM documentation: https://docs.ocean.dwavesys.com/en/latest/docs_dimod/reference/bqm.html#usage
+2. BQM documentation: https://docs.ocean.dwavesys.com/en/stable/docs_dimod/reference/quadratic.html#binary-quadratic-models
 3. Random python module: https://docs.python.org/3/library/random.html
 4. How to use the timeout parameter with the embedding tools: 
 https://support.dwavesys.com/hc/en-us/community/posts/360052799433/comments/1500000168162
 5. Maximum cut code example: https://github.com/dwave-examples/maximum-cut
+
+## License
+
+Released under the Apache License 2.0. See [LICENSE](LICENSE) file.

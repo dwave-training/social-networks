@@ -42,7 +42,7 @@ def get_graph():
 
     return G
 
-# TODO: Add code here to define a BQM using AdjVectorBQM from dimod
+# TODO: Add code here to define a BQM
 def get_bqm(G):
     """ Randomly assign a friendly or hostile relationship to edges in the dictionary.
 
@@ -52,7 +52,7 @@ def get_bqm(G):
             edges represent relationships between people
 
     Returns:
-        :obj:`AdjVectorBQM`: A binary-valued binary quadratic model
+        :obj:`BinaryQuadraticModel`: A binary-valued binary quadratic model
     """
     # Build the BQM
 
@@ -69,7 +69,7 @@ def run_on_hybrid(bqm):
     :return: Sampleset from the hybrid sampler
 
     Args:
-        bqm: (:obj:`AdjVectorBQM`):
+        bqm: (:obj:`BinaryQuadraticModel`):
             The BQM for the friends and enemies problem
 
     Returns:
@@ -89,7 +89,7 @@ def visualize(G, bqm, sampleset, problem_filename, solution_filename):
         G: (:obj:`networkx.Graph`):
             The Networkx graph of the friends and enemies problem
 
-        BQM: (:obj:`AdjVectorBQM`):
+        BQM: (:obj:`BinaryQuadraticModel`):
             The BQM for the friends and enemies problem
 
         sampleset: (:obj:`SampleSet`):
