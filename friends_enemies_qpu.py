@@ -209,8 +209,12 @@ if __name__ == "__main__":
     Q = get_qubo(G)
     sampleset = run_on_qpu(Q)
 
-    # Visualize results
-    visualize(G, Q, sampleset, "qpu_problem_graph.png", "qpu_solution_graph.png")
+    if sampleset.variables != []:
+        # Visualize results
+        visualize(G, Q, sampleset, "qpu_problem_graph.png", "qpu_solution_graph.png")
 
-    # Process results
-    process_sampleset(G, sampleset)
+        # Process results
+        process_sampleset(G, sampleset)
+
+    else:
+        print("\nNo samples returned.\n")
