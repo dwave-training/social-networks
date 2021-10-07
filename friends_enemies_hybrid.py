@@ -215,7 +215,7 @@ if __name__ == "__main__":
 
     if sampleset.variables != []:
         # Visualize results
-        visualize(G, Q, sampleset, "qpu_problem_graph.png", "qpu_solution_graph.png")
+        visualize(G, Q, sampleset, "hybrid_problem_graph.png", "hybrid_solution_graph.png")
 
         # Process results
         process_sampleset(G, sampleset)
