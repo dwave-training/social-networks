@@ -111,6 +111,11 @@ def visualize(G, bqm, sampleset, problem_filename, solution_filename):
     # Assign colors to nodes based on set membership
     blue = '#2a7de1'
     yellow = '#fcba03'
+    
+    for i in G.nodes():
+        if i not in sample:
+            sample[i] = 0
+            
     nodecolors = [blue if sample[i] == 0 else yellow for i in G.nodes()]
 
     # Get a subset of the original graph (just the nodes assigned to group 1)
@@ -208,11 +213,15 @@ if __name__ == "__main__":
     bqm = get_bqm(G)
     sampleset = run_on_hybrid(bqm)
 
-    # Visualize results
-    visualize(G, bqm, sampleset, "hybrid_problem_graph.png", "hybrid_solution_graph.png")
+    if sampleset.variables != []:
+        # Visualize results
+        visualize(G, Q, sampleset, "qpu_problem_graph.png", "qpu_solution_graph.png")
 
-    # Process results
-    process_sampleset(G, sampleset)
+        # Process results
+        process_sampleset(G, sampleset)
+
+    else:
+        print("\nNo samples returned.\n")
 
 
 
