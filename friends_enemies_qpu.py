@@ -112,6 +112,11 @@ def visualize(G, Q, sampleset, problem_filename, solution_filename):
     # Assign colors to nodes based on set membership
     blue = '#2a7de1'
     yellow = '#fcba03'
+    
+    for i in G.nodes():
+        if i not in sample:
+            sample[i] = 0
+    
     nodecolors = [blue if sample[i] == 0 else yellow for i in G.nodes()]
 
     # Get a subset of the original graph (just the nodes assigned to group 1)
