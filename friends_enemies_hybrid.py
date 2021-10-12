@@ -30,7 +30,7 @@ def get_token():
     return 'YOUR-TOKEN-HERE'
 
 def get_graph():
-    """ Randomly generats a graph that represents a social network (nodes will
+    """ Randomly generates a graph that represents a social network (nodes will
     represent people and edges represent relationships between people)
     """
 
@@ -215,7 +215,7 @@ if __name__ == "__main__":
 
     if sampleset.variables != []:
         # Visualize results
-        visualize(G, Q, sampleset, "hybrid_problem_graph.png", "hybrid_solution_graph.png")
+        visualize(G, bqm, sampleset, "hybrid_problem_graph.png", "hybrid_solution_graph.png")
 
         # Process results
         process_sampleset(G, sampleset)
