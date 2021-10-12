@@ -32,7 +32,7 @@ def get_token():
 
 
 def get_graph():
-    """ Randomly generats a graph that represents a social network (nodes will
+    """ Randomly generates a graph that represents a social network (nodes will
     represent people and edges represent relationships between people)
     """
 
