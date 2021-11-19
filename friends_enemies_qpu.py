@@ -14,6 +14,7 @@
 
 ## ------- import packages -------
 import random
+import sys
 
 import matplotlib
 matplotlib.use("agg")
@@ -207,6 +208,14 @@ def process_sampleset(G, sampleset):
 
 ## ------- Main program -------
 if __name__ == "__main__":
+
+    # Command-line option -no-viz to turn off visualization
+    args = sys.argv[1:]
+    if args[0] == '-no-viz':
+        viz = False
+    else:
+        viz = True
+
     # Generate a graph of a social network
     G = get_graph()
 
@@ -216,7 +225,8 @@ if __name__ == "__main__":
 
     if sampleset.variables != []:
         # Visualize results
-        visualize(G, Q, sampleset, "qpu_problem_graph.png", "qpu_solution_graph.png")
+        if viz:
+            visualize(G, Q, sampleset, "qpu_problem_graph.png", "qpu_solution_graph.png")
 
         # Process results
         process_sampleset(G, sampleset)
