@@ -211,8 +211,9 @@ if __name__ == "__main__":
 
     # Command-line option -no-viz to turn off visualization
     args = sys.argv[1:]
-    if args[0] == '-no-viz':
-        viz = False
+    if len(args) != 0:
+        if args[0] == '-no-viz':
+            viz = False
     else:
         viz = True
 
