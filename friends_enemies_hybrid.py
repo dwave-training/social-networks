@@ -216,7 +216,7 @@ if __name__ == "__main__":
     else:
         viz = True
 
-    # Generate a random graph (with a 75% probability of edge creation)
+    # Generate a graph of a social network
     G = get_graph()
 
     # Solve this problem on the BQM hybrid solver
