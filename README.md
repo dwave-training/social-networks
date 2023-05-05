@@ -1,3 +1,7 @@
+[![Open in Leap IDE](
+  https://cdn-assets.cloud.dwavesys.com/shared/latest/badges/leapide.svg)](
+  https://ide.dwavesys.io/#https://github.com/dwave-training/social-networks)
+
 # Set Partitioning - Friends and Enemies Problem
 
 In module 1b we looked at how to construct QUBOs that model friendly and
