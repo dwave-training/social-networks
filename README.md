@@ -4,7 +4,7 @@
 
 # Set Partitioning - Friends and Enemies Problem
 
-In module 1b we looked at how to construct QUBOs that model friendly and
+We already looked at how to construct QUBOs that model friendly and
 hostile relationships. We also saw that we can sum up the relationships 
 in a social network to model the network. When we solve this problem on
 a D-Wave solver, the solution partitions the graph into two sets such that the 
