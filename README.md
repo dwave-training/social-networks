@@ -57,9 +57,8 @@ graph. The QUBO will be submitted to the QPU. Feel free to experiment
   
  Open up the `friends_enemies_qpu.py` file. You will need to
  
-1. Add your API token.
-2. Construct the QUBO for the friends and enemies problem .
-3. Run the problem on the QPU.
+1. Construct the QUBO for the friends and enemies problem .
+2. Run the problem on the QPU.
 
 Hint:  
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
@@ -72,10 +71,9 @@ and the BinaryQuadraticModel you're asked to create.
 
 Open up the `friends_enemies_hybrid.py` file. You will need to
 
-1. Add your API token.
-2. Create a graph that's too large to run on the QPU.
-3. Construct a BQM for the friends and enemies problem. 
-4. Run the problem on the hybrid sampler.
+1. Create a graph that's too large to run on the QPU.
+2. Construct a BQM for the friends and enemies problem. 
+3. Run the problem on the hybrid sampler.
 
 Hint:  
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
