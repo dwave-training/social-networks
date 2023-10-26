@@ -1,5 +1,6 @@
+# Social Networks 
 
-# Set Partitioning - Friends and Enemies Problem
+## Set Partitioning - Friends and Enemies Problem
 
 We already looked at how to construct QUBOs that model friendly and
 hostile relationships. We also saw that we can sum up the relationships 
