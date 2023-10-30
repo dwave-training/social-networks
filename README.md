@@ -1,8 +1,6 @@
-[![Open in Leap IDE](
-  https://cdn-assets.cloud.dwavesys.com/shared/latest/badges/leapide.svg)](
-  https://ide.dwavesys.io/#https://github.com/dwave-training/social-networks)
+# Social Networks 
 
-# Set Partitioning - Friends and Enemies Problem
+## Set Partitioning - Friends and Enemies Problem
 
 We already looked at how to construct QUBOs that model friendly and
 hostile relationships. We also saw that we can sum up the relationships 
@@ -57,9 +55,8 @@ graph. The QUBO will be submitted to the QPU. Feel free to experiment
   
  Open up the `friends_enemies_qpu.py` file. You will need to
  
-1. Add your API token.
-2. Construct the QUBO for the friends and enemies problem .
-3. Run the problem on the QPU.
+1. Construct the QUBO for the friends and enemies problem .
+2. Run the problem on the QPU.
 
 Hint:  
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
@@ -72,10 +69,9 @@ and the BinaryQuadraticModel you're asked to create.
 
 Open up the `friends_enemies_hybrid.py` file. You will need to
 
-1. Add your API token.
-2. Create a graph that's too large to run on the QPU.
-3. Construct a BQM for the friends and enemies problem. 
-4. Run the problem on the hybrid sampler.
+1. Create a graph that's too large to run on the QPU.
+2. Construct a BQM for the friends and enemies problem. 
+3. Run the problem on the hybrid sampler.
 
 Hint:  
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
