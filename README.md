@@ -1,3 +1,7 @@
+[![Open in GitHub Codespaces](
+  https://img.shields.io/badge/Open%20in%20GitHub%20Codespaces-333?logo=github)](
+  https://codespaces.new/dwave-training/social-networks?quickstart=1)
+  
 # Social Networks 
 
 ## Set Partitioning - Friends and Enemies Problem
