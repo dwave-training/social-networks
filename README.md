@@ -81,8 +81,8 @@ Hint:
 * Use random.choice() to randomly assign a friendly or hostile relationship to an edge
 
 #### Resources
-1. Ocean documentation: https://docs.ocean.dwavesys.com/en/latest/index.html
-2. BQM documentation: https://docs.ocean.dwavesys.com/en/stable/docs_dimod/reference/quadratic.html#binary-quadratic-models
+1. Ocean documentation: https://docs.dwavequantum.com/en/latest/ocean/index.html
+2. BQM documentation: https://docs.dwavequantum.com/en/latest/ocean/api_ref_dimod/models.html#module-dimod.binary.binary_quadratic_model
 3. Random python module: https://docs.python.org/3/library/random.html
 4. How to use the timeout parameter with the embedding tools: 
 https://support.dwavesys.com/hc/en-us/community/posts/360052799433/comments/1500000168162
